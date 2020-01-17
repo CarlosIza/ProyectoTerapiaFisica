@@ -45,7 +45,7 @@ namespace Presentacion
         private void GuardarEmpleado()
         {
             Empleado medico = new Empleado();
-            medico.Id = 0;
+            medico.Id = "0";
             medico.Cedula = textBox_Cedula.Text;
             medico.Apellido1 = textBox_ApellidoP.Text;
             medico.Apellido2 = textBox_ApellidoM.Text;
@@ -95,13 +95,17 @@ namespace Presentacion
         {
 
             CargarTablaEmpleados();
+            
+            
 
         }
 
         private void CargarTablaEmpleados()
         {
-            dataGridViewClientes.DataSource = null;
-            dataGridViewClientes.DataSource = EmpleadoNegocio.DevolverListadoEmpleadosNegocio();
+            dataGridView_Medicos.DataSource = null;
+            dataGridView_Medicos.DataSource = EmpleadoNegocio.DevolverListadoEmpleadosNegocio();
+            DataGridViewColumn colunId = dataGridView_Medicos.Columns[0];
+            colunId.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -114,6 +118,7 @@ namespace Presentacion
         private void ModificarEmpleado()
         {
             Empleado medico = new Empleado();
+            medico.Id = textBox_Id.Text;
             medico.Cedula = textBox_Cedula.Text;
             medico.Apellido1 = textBox_ApellidoP.Text;
             medico.Apellido2 = textBox_ApellidoM.Text;
@@ -128,15 +133,16 @@ namespace Presentacion
 
         private void RecuperarDatos(object sender, DataGridViewCellEventArgs e)
         {
-            textBox_Cedula.Text = dataGridViewClientes.Rows[e.RowIndex].Cells["Cedula"].Value.ToString();
-            textBox_ApellidoP.Text = dataGridViewClientes.Rows[e.RowIndex].Cells["Apellido1"].Value.ToString();
-            textBox_ApellidoM.Text = dataGridViewClientes.Rows[e.RowIndex].Cells["Apellido2"].Value.ToString();
-            textBox_NombreP.Text = dataGridViewClientes.Rows[e.RowIndex].Cells["Nombre1"].Value.ToString();
-            textBox_NombreM.Text = dataGridViewClientes.Rows[e.RowIndex].Cells["Nombre2"].Value.ToString();
-            textBox_Telefono.Text = dataGridViewClientes.Rows[e.RowIndex].Cells["Telefono"].Value.ToString();
-            textBox_Direccion.Text = dataGridViewClientes.Rows[e.RowIndex].Cells["Direccion"].Value.ToString();
-            comboBox_Especialidad.SelectedItem = dataGridViewClientes.Rows[e.RowIndex].Cells["Especialidad"].Value.ToString();
-            textBox_Correo.Text = dataGridViewClientes.Rows[e.RowIndex].Cells["Email"].Value.ToString();
+            textBox_Id.Text= dataGridView_Medicos.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+            textBox_Cedula.Text = dataGridView_Medicos.Rows[e.RowIndex].Cells["Cedula"].Value.ToString();
+            textBox_ApellidoP.Text = dataGridView_Medicos.Rows[e.RowIndex].Cells["Apellido1"].Value.ToString();
+            textBox_ApellidoM.Text = dataGridView_Medicos.Rows[e.RowIndex].Cells["Apellido2"].Value.ToString();
+            textBox_NombreP.Text = dataGridView_Medicos.Rows[e.RowIndex].Cells["Nombre1"].Value.ToString();
+            textBox_NombreM.Text = dataGridView_Medicos.Rows[e.RowIndex].Cells["Nombre2"].Value.ToString();
+            textBox_Telefono.Text = dataGridView_Medicos.Rows[e.RowIndex].Cells["Telefono"].Value.ToString();
+            textBox_Direccion.Text = dataGridView_Medicos.Rows[e.RowIndex].Cells["Direccion"].Value.ToString();
+            comboBox_Especialidad.SelectedItem = dataGridView_Medicos.Rows[e.RowIndex].Cells["Especialidad"].Value.ToString();
+            textBox_Correo.Text = dataGridView_Medicos.Rows[e.RowIndex].Cells["Email"].Value.ToString();
         }
 
         private void btnCerrarP_Click(object sender, EventArgs e)

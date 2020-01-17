@@ -70,6 +70,12 @@
     <Compile Include="Enfermedades.Designer.cs">
       <DependentUpon>Enfermedades.cs</DependentUpon>
     </Compile>
+    <Compile Include="RepresentanteLegal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RepresentanteLegal.Designer.cs">
+      <DependentUpon>RepresentanteLegal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Cedulas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,11 +120,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings1.settings</DependentUpon>
-    </Compile>
     <Compile Include="Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Enfermedad_Formulario.resx">
       <DependentUpon>Enfermedad_Formulario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepresentanteLegal.resx">
+      <DependentUpon>RepresentanteLegal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Cedulas.resx">
       <DependentUpon>Form_Cedulas.cs</DependentUpon>
@@ -174,10 +178,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Settings1.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -47,10 +47,10 @@ namespace GestionDatos {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=ProyectoDesarrolloB;Integrated Security=True")]
-        public string conexionGuillermo {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MORALES;Initial Catalog=ProyectoDesarrolloB;Integrated Security=True")]
+        public string ConexionMorales {
             get {
-                return ((string)(this["conexionGuillermo"]));
+                return ((string)(this["ConexionMorales"]));
             }
         }
     }

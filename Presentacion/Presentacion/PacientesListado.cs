@@ -103,14 +103,26 @@ namespace Presentacion
                 pacientesDatos.txtApellido2.Text = pacienteSeleccionado.apellido2;
                 pacientesDatos.txtNombre1.Text = pacienteSeleccionado.nombre1;
                 pacientesDatos.txtNombre2.Text = pacienteSeleccionado.nombre2;
-                string fechaNac= Convert.ToDateTime(pacienteSeleccionado.fechaNacimiento).ToString("yyyy/MM/dd");
+                string fechaNac = Convert.ToDateTime(pacienteSeleccionado.fechaNacimiento).ToString("yyyy/MM/dd");
                 pacientesDatos.txtFechaNac.Text = fechaNac.Replace('/', '-');
                 pacientesDatos.cbGenero.Text = pacienteSeleccionado.genero;
-                string fechaIng= Convert.ToDateTime(pacienteSeleccionado.fechaIngreso).ToString("yyyy/MM/dd");
+                string fechaIng = Convert.ToDateTime(pacienteSeleccionado.fechaIngreso).ToString("yyyy/MM/dd");
                 pacientesDatos.txtFechaIngresPac.Text = fechaIng.Replace('/', '-');
                 pacientesDatos.txtTelefono.Text = pacienteSeleccionado.telefono;
                 pacientesDatos.txtDireccion.Text = pacienteSeleccionado.direccion;
+                //Obtiene el id del Paciente para asignarle un representante
+                representanteDatos.txtIdAuxiliar.Text = Convert.ToInt32(pacienteSeleccionado.id).ToString();
 
+                Representante representante = new Representante();
+                RepresentanteNegocio.DevolverListadoRepresentantesNegocio(Convert.ToInt32(pacienteSeleccionado.id), representanteDatos.txtIdAuxiliar,
+                                                                                                                     representanteDatos.txtCedula,
+                                                                                                                    representanteDatos.txtApellido,
+                                                                                                                    representanteDatos.txtNombre,
+                                                                                                                    representanteDatos.txtTelefono,
+                                                                                                                    representanteDatos.txtDireccion,
+                                                                                                                       representanteDatos.cbParentesco,
+                                                                                                                     representanteDatos.txtEmail);
+                
             }
 
         }
@@ -126,6 +138,13 @@ namespace Presentacion
            
             Paciente paciente = new Paciente();
             paciente = PacienteNegocio.EliminarPacienteNegocio(paciente,id);
+        }
+        RepresentanteLegal representanteDatos = new RepresentanteLegal();
+        private void Button1_Click(object sender, EventArgs e)
+        {
+          
+            representanteDatos.ShowDialog();
+            this.Close();
         }
     }
 }

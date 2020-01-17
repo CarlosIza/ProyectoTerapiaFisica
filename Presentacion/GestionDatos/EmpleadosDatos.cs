@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using GestionEntidades;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace GestionDatos
 {
@@ -21,7 +22,7 @@ namespace GestionDatos
         {
             try
             {
-                SqlConnection conexion = new SqlConnection(Settings1.Default.cadenaConexion);
+                SqlConnection conexion = new SqlConnection(Settings1.Default.ConexionMorales);
                 conexion.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conexion;
@@ -30,7 +31,7 @@ namespace GestionDatos
                 List<Empleado> listaEmpleados = new List<Empleado>();
 
 
-                cmd.CommandText = @"SELECT * FROM `empleados`";
+                cmd.CommandText = @"select * from Empleado";
 
 
                 using (var dr = cmd.ExecuteReader())
@@ -38,15 +39,16 @@ namespace GestionDatos
                     while (dr.Read())
                     {
                         Empleado medico = new Empleado();
-                        medico.Cedula = dr["CED_EMP"].ToString();
-                        medico.Apellido1 = dr["APE1_EMP"].ToString();
-                        medico.Apellido2 = dr["APE2_EMP"].ToString();
-                        medico.Nombre1 = dr["NOM1_EMP"].ToString();
-                        medico.Nombre2 = dr["NOM2_EMP"].ToString();
-                        medico.Especialidad = dr["ESP_EMP"].ToString();
-                        medico.Telefono = dr["TEL_EMP"].ToString();
-                        medico.Direccion = dr["DIR_EMP"].ToString();
-                        medico.Email = dr["EMAIL_EMP"].ToString();
+                        medico.Id =dr["id"].ToString();
+                        medico.Cedula = dr["cedula"].ToString();
+                        medico.Apellido1 = dr["apellidoPaterno"].ToString();
+                        medico.Apellido2 = dr["apellidoMaterno"].ToString();
+                        medico.Nombre1 = dr["primerNombre"].ToString();
+                        medico.Nombre2 = dr["segundoNombre"].ToString();
+                        medico.Especialidad = dr["especialidad"].ToString();
+                        medico.Telefono = dr["telefono"].ToString();
+                        medico.Direccion = dr["direccion"].ToString();
+                        medico.Email = dr["email"].ToString();
 
                         listaEmpleados.Add(medico);
                     }
@@ -67,7 +69,7 @@ namespace GestionDatos
             {
                 string query = ("DELETE FROM `empleados` WHERE CED_EMP='"+cedula+"'");
                 MySqlCommand cmd = new MySqlCommand(query, c.obtenerconexion());
-                cmd.Parameters.AddWithValue("?cedula", cedula);               
+                cmd.Parameters.AddWithValue("@cedula", cedula);               
                 cmd.ExecuteNonQuery();            
             }
             catch (Exception)
@@ -78,29 +80,47 @@ namespace GestionDatos
 
         public static Empleado ActualizarEmpleadoDatos(Empleado medico)
         {
-            Conexion c = new Conexion();
             try
             {
+                SqlConnection conexion = new SqlConnection(Settings1.Default.ConexionMorales);
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conexion;
+                cmd.CommandText = @"UPDATE[dbo].[Empleado]
+   SET[cedula] = @cedula 
+   ,[apellidoPaterno] = @ape1   
+      ,[apellidoMaterno] =@ape2
+      ,[primerNombre] = @nom1
+      ,[segundoNombre] = @nom2
+      ,[especialidad] = @espe
+      ,[direccion] =@dir
+      ,[telefono] = @tel
+      ,[email] = @email
+ WHERE id=@id";
 
 
 
 
-                string query = @"UPDATE `empleados` SET `APE1_EMP`=?apellido1,`APE2_EMP`=?apellido2,`NOM1_EMP`=?nombre1,`NOM2_EMP`=?nombre2,`ESP_EMP`=?espe,`DIR_EMP`=?direccion,`TEL_EMP`=?telefono,`EMAIL_EMP`=?correo where CED_EMP=?cedula";
-                MySqlCommand cmd = new MySqlCommand(query, c.obtenerconexion());
-                cmd.Parameters.AddWithValue("?cedula", medico.Cedula);
-                cmd.Parameters.AddWithValue("?apellido1", medico.Apellido1);
-                cmd.Parameters.AddWithValue("?apellido2", medico.Apellido2);
-                cmd.Parameters.AddWithValue("?nombre1", medico.Nombre1);
-                cmd.Parameters.AddWithValue("?nombre2", medico.Nombre2);
-                cmd.Parameters.AddWithValue("?espe", medico.Especialidad);
-                cmd.Parameters.AddWithValue("?telefono", medico.Telefono);
-                cmd.Parameters.AddWithValue("?direccion", medico.Direccion);
-                cmd.Parameters.AddWithValue("?correo", medico.Email);
+                cmd.Parameters.AddWithValue("@cedula",medico.Cedula);
+                cmd.Parameters.AddWithValue("@ape1", medico.Apellido1);
+                cmd.Parameters.AddWithValue("@ape2", medico.Apellido2);
+                cmd.Parameters.AddWithValue("@nom1",medico.Nombre1);
+                cmd.Parameters.AddWithValue("@nom2", medico.Nombre2);
+                cmd.Parameters.AddWithValue("@espe", medico.Especialidad);
+                cmd.Parameters.AddWithValue("@dir", medico.Direccion);
+                cmd.Parameters.AddWithValue("@tel", medico.Telefono);
+                cmd.Parameters.AddWithValue("@id", medico.Id);
+                cmd.Parameters.AddWithValue("@email", medico.Email);
+
+                cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                conexion.Close();
                 return medico;
+
             }
             catch (Exception)
             {
+
                 throw;
             }
         }
@@ -110,19 +130,34 @@ namespace GestionDatos
             Conexion c = new Conexion();
             try
             {
-                string query = @"INSERT INTO `empleados`(`CED_EMP`, `APE1_EMP`, `APE2_EMP`, `NOM1_EMP`, `NOM2_EMP`, `ESP_EMP`, `DIR_EMP`, `TEL_EMP`, `EMAIL_EMP`) 
-                                                         VALUES (?cedula,?apellido1,?apellido2,?nombre1,?nombre2,?espe,?direccion,?telefono,?correo)";
-                MySqlCommand cmd = new MySqlCommand(query, c.obtenerconexion());
-                cmd.Parameters.AddWithValue("?cedula", medico.Cedula);
-                cmd.Parameters.AddWithValue("?apellido1", medico.Apellido1);
-                cmd.Parameters.AddWithValue("?apellido2", medico.Apellido2);
-                cmd.Parameters.AddWithValue("?nombre1", medico.Nombre1);
-                cmd.Parameters.AddWithValue("?nombre2", medico.Nombre2);
-                cmd.Parameters.AddWithValue("?espe", medico.Especialidad);
-                cmd.Parameters.AddWithValue("?telefono", medico.Telefono);
-                cmd.Parameters.AddWithValue("?direccion", medico.Direccion);
-                cmd.Parameters.AddWithValue("?correo", medico.Email);
-                cmd.ExecuteNonQuery();
+                SqlConnection conexion = new SqlConnection(Settings1.Default.ConexionMorales);
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conexion;
+                cmd.CommandText= @"INSERT INTO [dbo].[Empleado]
+                                                   ([cedula]
+                                                   ,[apellidoPaterno]
+                                                   ,[apellidoMaterno]
+                                                   ,[primerNombre]
+                                                   ,[segundoNombre]
+                                                   ,[especialidad]
+                                                   ,[direccion]
+                                                   ,[telefono]
+                                                   ,[email])
+                                             VALUES
+                                                (@cedula,@apellido1,@apellido2,@nombre1,@nombre2,@espe,@direccion,@telefono,@correo)";
+               
+                cmd.Parameters.AddWithValue("@cedula", medico.Cedula);
+                cmd.Parameters.AddWithValue("@apellido1", medico.Apellido1);
+                cmd.Parameters.AddWithValue("@apellido2", medico.Apellido2);
+                cmd.Parameters.AddWithValue("@nombre1", medico.Nombre1);
+                cmd.Parameters.AddWithValue("@nombre2", medico.Nombre2);
+                cmd.Parameters.AddWithValue("@espe", medico.Especialidad);
+                cmd.Parameters.AddWithValue("@telefono", medico.Telefono);
+                cmd.Parameters.AddWithValue("@direccion", medico.Direccion);
+                cmd.Parameters.AddWithValue("@correo", medico.Email);
+                cmd.CommandType = CommandType.Text;
+                var idCliente = Convert.ToInt32(cmd.ExecuteScalar());
                 return medico;
             }
             catch (Exception)

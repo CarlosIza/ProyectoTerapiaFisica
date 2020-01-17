@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox_Id = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox_Correo = new System.Windows.Forms.TextBox();
             this.comboBox_Especialidad = new System.Windows.Forms.ComboBox();
@@ -45,7 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Cedula = new System.Windows.Forms.TextBox();
-            this.dataGridViewClientes = new System.Windows.Forms.DataGridView();
+            this.dataGridView_Medicos = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnLogiar = new System.Windows.Forms.Button();
@@ -53,9 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.btnCerrarP = new System.Windows.Forms.Button();
-            this.textBox_Id = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Medicos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -84,6 +84,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(367, 536);
             this.panel1.TabIndex = 1;
+            // 
+            // textBox_Id
+            // 
+            this.textBox_Id.BackColor = System.Drawing.Color.White;
+            this.textBox_Id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_Id.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Id.ForeColor = System.Drawing.Color.DimGray;
+            this.textBox_Id.Location = new System.Drawing.Point(2, 510);
+            this.textBox_Id.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_Id.Name = "textBox_Id";
+            this.textBox_Id.Size = new System.Drawing.Size(10, 24);
+            this.textBox_Id.TabIndex = 33;
+            this.textBox_Id.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label6
             // 
@@ -295,19 +308,19 @@
             this.textBox_Cedula.Leave += new System.EventHandler(this.txtCedula_Leave);
             this.textBox_Cedula.MouseEnter += new System.EventHandler(this.txtCedula_MouseEnter);
             // 
-            // dataGridViewClientes
+            // dataGridView_Medicos
             // 
-            this.dataGridViewClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClientes.Location = new System.Drawing.Point(389, 54);
-            this.dataGridViewClientes.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridViewClientes.Name = "dataGridViewClientes";
-            this.dataGridViewClientes.RowHeadersWidth = 51;
-            this.dataGridViewClientes.RowTemplate.Height = 24;
-            this.dataGridViewClientes.Size = new System.Drawing.Size(763, 397);
-            this.dataGridViewClientes.TabIndex = 2;
-            this.dataGridViewClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecuperarDatos);
-            this.dataGridViewClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientes_CellContentClick);
+            this.dataGridView_Medicos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView_Medicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Medicos.Location = new System.Drawing.Point(389, 54);
+            this.dataGridView_Medicos.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView_Medicos.Name = "dataGridView_Medicos";
+            this.dataGridView_Medicos.RowHeadersWidth = 51;
+            this.dataGridView_Medicos.RowTemplate.Height = 24;
+            this.dataGridView_Medicos.Size = new System.Drawing.Size(902, 397);
+            this.dataGridView_Medicos.TabIndex = 2;
+            this.dataGridView_Medicos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecuperarDatos);
+            this.dataGridView_Medicos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientes_CellContentClick);
             // 
             // button1
             // 
@@ -395,7 +408,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe Script", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.LightGray;
-            this.button3.Location = new System.Drawing.Point(1096, 8);
+            this.button3.Location = new System.Drawing.Point(1233, 15);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(27, 23);
@@ -413,7 +426,7 @@
             this.btnCerrarP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarP.Font = new System.Drawing.Font("Segoe Script", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarP.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnCerrarP.Location = new System.Drawing.Point(1125, 8);
+            this.btnCerrarP.Location = new System.Drawing.Point(1262, 15);
             this.btnCerrarP.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrarP.Name = "btnCerrarP";
             this.btnCerrarP.Size = new System.Drawing.Size(27, 23);
@@ -422,25 +435,12 @@
             this.btnCerrarP.UseVisualStyleBackColor = false;
             this.btnCerrarP.Click += new System.EventHandler(this.btnCerrarP_Click);
             // 
-            // textBox_Id
-            // 
-            this.textBox_Id.BackColor = System.Drawing.Color.White;
-            this.textBox_Id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_Id.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Id.ForeColor = System.Drawing.Color.DimGray;
-            this.textBox_Id.Location = new System.Drawing.Point(2, 510);
-            this.textBox_Id.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_Id.Name = "textBox_Id";
-            this.textBox_Id.Size = new System.Drawing.Size(10, 24);
-            this.textBox_Id.TabIndex = 33;
-            this.textBox_Id.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
             // Form_Medidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(1163, 536);
+            this.ClientSize = new System.Drawing.Size(1302, 536);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnCerrarP);
             this.Controls.Add(this.textBox1);
@@ -448,7 +448,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnLogiar);
-            this.Controls.Add(this.dataGridViewClientes);
+            this.Controls.Add(this.dataGridView_Medicos);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_Medidos";
@@ -456,7 +456,7 @@
             this.Load += new System.EventHandler(this.Medicos_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Medicos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -478,7 +478,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_Cedula;
-        private System.Windows.Forms.DataGridView dataGridViewClientes;
+        private System.Windows.Forms.DataGridView dataGridView_Medicos;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnLogiar;

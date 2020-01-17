@@ -8,7 +8,7 @@ namespace GestionEntidades
 {
    public class Empleado
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Cedula { get; set; }
         public string Nombre1 { get; set; }
         public string Nombre2 { get; set; }

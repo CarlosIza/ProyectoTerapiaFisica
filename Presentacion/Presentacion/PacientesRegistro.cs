@@ -162,5 +162,12 @@ namespace Presentacion
             c.soloNumeros(e);
             c.controlarNumeroCaracteres(e,txtCedula);
         }
+
+        private void BtnAgregarFamiliar_Click(object sender, EventArgs e)
+        {
+            PacientesRegistro pacientesDatos = new PacientesRegistro();
+            pacientesDatos.ShowDialog();
+            this.Close();
+        }
     }
 }

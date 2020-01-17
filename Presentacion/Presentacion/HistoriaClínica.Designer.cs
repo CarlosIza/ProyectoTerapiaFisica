@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCedula = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtApellido1 = new System.Windows.Forms.TextBox();
@@ -55,6 +55,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1362, 84);
             this.panel1.TabIndex = 31;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(11, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 19);
+            this.label2.TabIndex = 35;
+            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // label6
             // 
@@ -91,18 +103,6 @@
             this.txtCedula.Size = new System.Drawing.Size(143, 28);
             this.txtCedula.TabIndex = 32;
             this.txtCedula.Text = "Ingrese Cédula";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(11, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 19);
-            this.label2.TabIndex = 35;
-            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // label4
             // 
@@ -197,7 +197,7 @@
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(521, 123);
+            this.listView1.Location = new System.Drawing.Point(521, 137);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(762, 160);
             this.listView1.TabIndex = 41;
@@ -206,7 +206,7 @@
             // listView2
             // 
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(521, 414);
+            this.listView2.Location = new System.Drawing.Point(521, 379);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(762, 174);
             this.listView2.TabIndex = 43;
@@ -218,7 +218,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(517, 392);
+            this.label8.Location = new System.Drawing.Point(517, 330);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(316, 19);
             this.label8.TabIndex = 42;

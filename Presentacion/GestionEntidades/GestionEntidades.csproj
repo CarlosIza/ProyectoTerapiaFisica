@@ -45,7 +45,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="EmpleadoCedulas.cs" />
     <Compile Include="Empleado.cs" />
-    <Compile Include="Enfermedad.cs" />
+    <Compile Include="Representante.cs" />
     <Compile Include="Paciente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios.cs" />
