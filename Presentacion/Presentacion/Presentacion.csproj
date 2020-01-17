@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controles.cs" />
+    <Compile Include="Atencion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Atencion.Designer.cs">
+      <DependentUpon>Atencion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Medidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     <Compile Include="Usuarios.Designer.cs">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Atencion.resx">
+      <DependentUpon>Atencion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Medidos.resx">
       <DependentUpon>Form_Medidos.cs</DependentUpon>
     </EmbeddedResource>
